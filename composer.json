@@ -1,0 +1,45 @@
+{
+  "name": "nodasoft/xls-templating-php",
+  "description": "PHP Excel Templating - Generate XLS, XLSX and PDF by template",
+  "keywords": ["PHP", "PDF", "Excel", "xlsx", "xls", "unoconv", "gnumeric", "spreadsheet"],
+  "homepage": "https://github.com/nodasoft/xls-templating-php",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "groall",
+      "homepage": "https://github.com/groall"
+    }
+  ],
+  "scripts": {
+    "check": [
+      "php-cs-fixer fix --ansi --dry-run --diff",
+      "phpcs",
+      "phpunit --color=always"
+    ],
+    "fix": [
+      "php-cs-fixer fix --ansi"
+    ],
+    "versions": [
+      "phpcs --report-width=200 samples/ src/ tests/ --ignore=samples/Header.php --standard=PHPCompatibility --runtime-set testVersion 7.2- -n"
+    ]
+  },
+  "require": {
+    "php": "^7.2||^8.0",
+    "phpoffice/phpspreadsheet": "1.16.0"
+  },
+  "require-dev": {
+    "phpcompatibility/php-compatibility": "^9.3",
+    "phpunit/phpunit": "^8.5||^9.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "NodaSoft\\PhpXlsTemplating\\": "src/PhpXlsTemplating"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "NodaSoft\\PhpXlsTemplatingTests\\": "tests/PhpXlsTemplatingtTests"
+    }
+  }
+}

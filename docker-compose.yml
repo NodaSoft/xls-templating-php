@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  php:
+    image: yiisoftware/yii2-php:7.4-apache
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app:delegated
+    ports:
+      - '8000:80'
+    networks:
+      dietplan:
+  # Контейнер с php, чтобы выполнять консольные команды
+  cmd:
+    image: php:8.0.0-cli
+    container_name: cmd
+    working_dir: /usr/src/diet_plans
+    volumes:
+      - .:/usr/src/diet_plans
+  # Контейнер с php, чтобы выполнять консольные команды
+  composer:
+    image: composer:2.0
+    container_name: composer
+    volumes:
+      - ./:/app
+
+
+networks:
+  dietplan:
+    external: true
+    name: dietplan

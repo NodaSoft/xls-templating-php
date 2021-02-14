@@ -10,7 +10,7 @@ $t = new Templating();
 $t->setTplFileName('tests/test.xlsx');
 $t->setResultFileName('tests/test.result.xlsx');
 $options = new ProcessOptions();
-//$options->copyStyles = true;
+$options->copyStyles = true;
 $options->insertInsteadOfCopy = true;
 $t->setOptions($options);
 $t->run([

@@ -246,12 +246,11 @@ class ProcessWorksheet
         // Создаем новую пустую строку под текущей
         if ($this->options->insertInsteadOfCopy) {
             $this->worksheet->insertNewRowBefore($targetRowIndex);
-        } else {
-            // Вставляем в неё скопированную первоначальную
-            $this->worksheet->fromArray($rowCells, null, 'A' . $targetRowIndex, false);
-            if ($this->options->copyStyles) {
-                $this->duplicateRowStyle($sourceRowIndex, $targetRowIndex);
-            }
+        }
+        // Вставляем в неё скопированную первоначальную
+        $this->worksheet->fromArray($rowCells, null, 'A' . $targetRowIndex, false);
+        if ($this->options->copyStyles) {
+            $this->duplicateRowStyle($sourceRowIndex, $targetRowIndex);
         }
     }
 

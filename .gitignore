@@ -1,3 +1,4 @@
 .idea/
 vendor/
 tests/.~lock.test.xlsx#
+tests/test.result.xlsx

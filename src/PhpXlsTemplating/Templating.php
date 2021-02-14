@@ -152,4 +152,26 @@ class Templating
 
         return $this;
     }
+
+    /**
+     * @param bool $isSendToBrowser
+     * @return Templating
+     */
+    public function setIsSendToBrowser(bool $isSendToBrowser): Templating
+    {
+        $this->isSendToBrowser = $isSendToBrowser;
+
+        return $this;
+    }
+
+    /**
+     * @param bool $isSendAsAttach
+     * @return Templating
+     */
+    public function setIsSendAsAttach(bool $isSendAsAttach): Templating
+    {
+        $this->isSendAsAttach = $isSendAsAttach;
+
+        return $this;
+    }
 }

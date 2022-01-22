@@ -40,7 +40,7 @@ class Templating
      * @param string $writerType
      * @throws \PhpOffice\PhpSpreadsheet\Exception
      */
-    public function run(array $tplData, $writerType = 'Xlsx'): void
+    public function run(array $tplData, string $writerType = 'Xlsx'): void
     {
         $process = new ProcessSpreadsheet();
         $process->setTplData($tplData);
@@ -60,30 +60,40 @@ class Templating
     private function loadSpreadsheet(): Spreadsheet
     {
         $spreadsheet = IOFactory::load($this->tplFileName);
-        $spreadsheet->getProperties()->setCreator('User User')->setLastModifiedBy('User User')->setTitle('Document')->setSubject('Document')->setDescription('')->setKeywords('')->setCategory('');
+        $spreadsheet
+            ->getProperties()
+            ->setCreator('User User')
+            ->setLastModifiedBy('User User')
+            ->setTitle('Document')
+            ->setSubject('Document')
+            ->setDescription('')
+            ->setKeywords('')
+            ->setCategory('');
 
         return $spreadsheet;
     }
 
     /**
      * @param Spreadsheet $spreadsheet
-     * @param $writerType
+     * @param string $writerType
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
-    private function save(Spreadsheet $spreadsheet, $writerType): void
+    private function save(Spreadsheet $spreadsheet, string $writerType): void
     {
         $writer = IOFactory::createWriter($spreadsheet, $writerType);
 
         $fileDir = dirname($this->resultFileName);
         $outputFileName = basename($this->resultFileName);
-        if ($writerType === Pdf::class) {
+        if (in_array($writerType,['Tcpdf', 'Mpdf',  'Dompdf'], true)) {
             // Не вычислять формулы при загрузке документа
             $writer->setPreCalculateFormulas(false);
             if ($this->isSendToBrowser) {
                 $this->sendPdfHeader($outputFileName);
             }
-        } else if ($this->isSendToBrowser) {
-            $this->sendExcelHeader($outputFileName);
+        } else {
+            if ($this->isSendToBrowser) {
+                $this->sendExcelHeader($outputFileName);
+            }
         }
 
         if ($this->isSendToBrowser) {

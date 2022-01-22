@@ -8,6 +8,9 @@ use PhpOffice\PhpSpreadsheet\Cell\Cell;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\Exception;
 
+/**
+ * One cell processing
+ */
 class ProcessCell
 {
     /**
@@ -27,6 +30,7 @@ class ProcessCell
     }
 
     /**
+     * Process one call - replace all variable and process all tqgs in the cell
      * @param Cell $cell
      * @param array $extTplData
      * @return ProcessCellResult

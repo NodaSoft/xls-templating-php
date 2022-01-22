@@ -73,15 +73,6 @@ $t
 docker-compose build && docker-compose run cmd /usr/local/bin/composer update
 ```
 
-#### todo
-* fix formula's processing
-* column hiding
-* add comments (phpdoc)
-* translate comments in English
-* write the examples
-* write the tests
-
-
 #### Guide
 
 ##### Vars 
@@ -190,3 +181,12 @@ $tplData['bar'] = 'some other text';
 Cell template: `{IF cond}{foo}{ELSE}{bar}{/IF}`
 
 Result: 'some other text'
+
+### todo
+* complete this readme
+* fix formula's processing
+* column hiding
+* add comments (phpdoc)
+* translate comments into English
+* write the examples
+* write the tests
